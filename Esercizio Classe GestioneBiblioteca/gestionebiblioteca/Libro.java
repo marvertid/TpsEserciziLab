@@ -1,7 +1,5 @@
 package gestionebiblioteca;
 
-import java.util.Scanner;
-
 public class Libro {
     private int codice;
     private String titolo;
