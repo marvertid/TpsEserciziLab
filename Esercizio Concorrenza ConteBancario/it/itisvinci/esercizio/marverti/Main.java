@@ -10,6 +10,10 @@ corrente sia sempre corretto.
 
 public class Main {
     public static void main(String[] args) {
-        
+        Conto conto = new Conto();
+        Transizione t1 = new Transizione("Prova1", conto);
+        Transizione t2 = new Transizione("Prova2", conto);
+        t1.start();
+        t2.start();
     }
 }
