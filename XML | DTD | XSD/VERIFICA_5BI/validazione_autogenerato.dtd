@@ -1,0 +1,29 @@
+<!ELEMENT supermercato (informazioniSupermercato,prodotto+,cliente+,acquisto+)>
+<!ELEMENT informazioniSupermercato (nome,indirizzo,telefono,email,apertura,chiusura)>
+<!ELEMENT nome (#PCDATA)>
+<!ELEMENT indirizzo (#PCDATA)>
+<!ELEMENT telefono (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT apertura (#PCDATA)>
+<!ELEMENT chiusura (#PCDATA)>
+<!ELEMENT prodotto (nome,marca,prezzo)>
+<!ATTLIST prodotto id ID #REQUIRED>
+<!ATTLIST prodotto categoria CDATA #REQUIRED>
+<!ELEMENT marca (#PCDATA)>
+<!ELEMENT prezzo (importo)>
+<!ATTLIST prezzo valuta CDATA #REQUIRED>
+<!ELEMENT importo (#PCDATA)>
+<!ELEMENT cliente (nome,indirizzo,telefono,email,codiceFiscale?,partitaIVA?)>
+<!ATTLIST cliente id ID #REQUIRED>
+<!ELEMENT codiceFiscale (#PCDATA)>
+<!ELEMENT partitaIVA (#PCDATA)>
+<!ELEMENT acquisto (dataOraAcquisto,prodottiAcquisto,totalePagato)>
+<!ATTLIST acquisto clienteId IDREF #IMPLIED>
+<!ATTLIST acquisto fattura (true|false) #IMPLIED>
+<!ELEMENT dataOraAcquisto (#PCDATA)>
+<!ELEMENT prodottiAcquisto (prodottoAcquisto+)>
+<!ELEMENT prodottoAcquisto (quantita)>
+<!ATTLIST prodottoAcquisto prodottoId IDREF #REQUIRED>
+<!ELEMENT quantita (#PCDATA)>
+<!ELEMENT totalePagato (importo)>
+<!ATTLIST totalePagato valuta CDATA #REQUIRED>

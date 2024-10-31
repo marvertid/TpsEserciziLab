@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<seta>
+    <informazioniSeta>
+        <nome>Seta Sede di Carpi</nome>
+        <indirizzo>Via Peruzzi 7, MO, Italy</indirizzo>
+        <telefono>+39 059 123456</telefono>
+        <email>motf030004@seta.it</email>
+        <apertura>08:00</apertura>
+        <chiusura>22:00</chiusura>
+        <pIva>IT123456789ABC</pIva>
+    </informazioniSeta>
+
+    <clienti>
+        <cliente id="CLI001">
+            <nome>Anna Verdi</nome>
+            <indirizzo>Via Napoli 22, 80100 Napoli, Italia</indirizzo>
+            <telefono>+39 081 9876543</telefono>
+            <email>anna.verdi@example.com</email>
+            <codiceFiscale>VRDANN85P41F839X</codiceFiscale>
+        </cliente>
+        <cliente id="CLI002">
+            <nome>Luca Neri</nome>
+            <indirizzo>Via Firenze 8, 50100 Firenze, Italia</indirizzo>
+            <telefono>+39 055 6789012</telefono>
+            <email>luca.neri@example.com</email>
+            <partitaIVA>IT12345678901</partitaIVA>
+        </cliente>
+    </clienti>
+    
+    <stazioni>
+        <stazione id="STZ001">
+            <nome>Stazione1</nome>
+            <via>Via della stazione 1</via>
+            <cap>41012</cap>
+        </stazione>
+        <stazione id="STZ002">
+            <nome>Stazione2</nome>
+            <via>Via della stazione 2</via>
+            <cap>41013</cap>
+        </stazione>    
+    </stazioni>
+    
+    <viaggiEffettuati>
+        <viaggio id="VGO001">
+            <nCorsa>500</nCorsa>
+            <cittaPartenza>Carpi</cittaPartenza>
+            <cittaDestinazione>Modena</cittaDestinazione>
+            <numeroPasseggeri>50</numeroPasseggeri>
+            <tempoImpiegato>45:30</tempoImpiegato> <!-- mm:ss -->
+            <clientiABordo>
+                <cliente id="CLI001"></cliente>
+                <cliente id="CLI002"></cliente>
+            </clientiABordo>
+            <fermate>
+                <stazione id="STZ001"></stazione>
+                <stazione id="STZ002"></stazione>
+            </fermate>
+        </viaggio>
+        <viaggio id="VGO002">
+            <nCorsa>510</nCorsa>
+            <cittaPartenza>Carpi</cittaPartenza>
+            <cittaDestinazione>Fossoli</cittaDestinazione>
+            <numeroPasseggeri>33</numeroPasseggeri>
+            <tempoImpiegato>14:30</tempoImpiegato> <!-- mm:ss -->
+            <clientiABordo>
+                <cliente id="CLI001"></cliente>
+                <cliente id="CLI002"></cliente>
+            </clientiABordo>
+            <fermate>
+                <stazione id="STZ001"></stazione>
+                <stazione id="STZ002"></stazione>
+            </fermate>
+        </viaggio>
+        <viaggio id="VGO003">
+            <nCorsa>345</nCorsa>
+            <cittaPartenza>Carpi</cittaPartenza>
+            <cittaDestinazione>Casinalbo</cittaDestinazione>
+            <numeroPasseggeri>43</numeroPasseggeri>
+            <tempoImpiegato>50:30</tempoImpiegato> <!-- mm:ss -->
+            <clientiABordo>
+                <cliente id="CLI001"></cliente>
+                <cliente id="CLI002"></cliente>
+            </clientiABordo>
+            <fermate>
+                <stazione id="STZ001"></stazione>
+                <stazione id="STZ002"></stazione>
+            </fermate>
+        </viaggio>
+    </viaggiEffettuati>
+</seta>

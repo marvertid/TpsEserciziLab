@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="my-ns"
+  xmlns="my-ns"
+  elementFormDefault="qualified">
+  <xs:element name="supermercato">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="informazioniSupermercato">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nome" type="xs:string" />
+              <xs:element name="indirizzo" type="xs:string" />
+              <xs:element name="telefono" type="xs:string" />
+              <xs:element name="email" type="xs:string" />
+              <xs:element name="apertura">
+                <xs:simpleType>
+                  <xs:restriction base="xs:time">
+                    <xs:minInclusive value="08:00:00" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="chiusura">
+                <xs:simpleType>
+                  <xs:restriction base="xs:time">
+                    <xs:maxExclusive value="23:00:00" />
+                    <xs:minExclusive value="09:00:00" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+
+        <xs:element name="prodotto" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nome" type="xs:string" />
+              <xs:element name="marca" type="xs:string" />
+              <xs:element name="prezzo" type="prezzoValidator" />
+            </xs:sequence>
+            <xs:attribute name="id" use="required">
+              <xs:simpleType>
+                <xs:restriction base="xs:ID">
+                  <xs:pattern value="[A-Z]{4}[0-9]{3}" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="categoria" use="required">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="ALIMENTARI" />
+                  <xs:enumeration value="BEVANDE" />
+                  <xs:enumeration value="LAVANDERIA" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+          </xs:complexType>
+
+        </xs:element>
+
+
+        <xs:element name="cliente" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nome" type="xs:string"/>
+              <xs:element name="indirizzo" type="xs:string"/>
+              <xs:element name="telefono" type="xs:string"/>
+              <xs:element name="email" type="xs:string"/>
+              <xs:element name="codiceFiscale" type="xs:string" minOccurs="0"/>
+              <xs:element name="partitaIVA" type="xs:string" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute name="id" use="required">
+              <xs:simpleType>
+                <xs:restriction base="xs:ID">
+                  <xs:pattern value="[A-Z]{3}[0-9]{3}" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="acquisto" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="dataOraAcquisto" type="xs:dateTime"/>
+              <xs:element name="prodottiAcquisto">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="prodottoAcquisto" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="quantita">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:integer">
+                                <xs:minExclusive value="0" />
+                                <xs:maxExclusive value="300" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="prodottoId" type="xs:IDREF"/>
+                      </xs:complexType>
+                    </xs:element>
+                      
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="totalePagato" type="prezzoValidator" />
+            </xs:sequence>
+            <xs:attribute name="clienteId" type="xs:IDREF"/>
+            <xs:attribute name="fattura" type="xs:boolean"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="prezzoValidator">
+    <xs:sequence>
+      <xs:element name="importo">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0.01" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="valuta">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="EUR" />
+          <xs:enumeration value="USD" />
+          <xs:enumeration value="GBP" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+</xs:schema>

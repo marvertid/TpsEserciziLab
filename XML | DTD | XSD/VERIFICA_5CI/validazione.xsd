@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="my-ns"
+  xmlns="my-ns"
+  elementFormDefault="qualified">
+<xs:element name="albergo">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="informazioniAlbergo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="nome" type="xs:string"/>
+            <xs:element name="indirizzo" type="xs:string"/>
+            <xs:element name="telefono" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="checkIn">
+              <xs:simpleType>
+                <xs:restriction base="xs:time">
+                  <xs:maxExclusive value="15:00:00" />
+                  <xs:minExclusive value="00:00:00" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="checkOut">
+              <xs:simpleType>
+                <xs:restriction base="xs:time">
+                  <xs:maxExclusive value="20:00:00" />
+                  <xs:minExclusive value="02:00:00" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name ="camera" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="descrizione" type="xs:string"/>
+            <xs:element name="prezzoNotte" type="valutaCheck"/>
+            <xs:element name="note" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+          <xs:attribute name="id">
+            <xs:simpleType>
+              <xs:restriction base="xs:ID">
+                <xs:pattern value="[A-Z]{3}[0-9]{3}"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="categoria">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="STANDARD"/>
+                <xs:enumeration value="DELUXE"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="tipo">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="SINGOLA"/>
+                <xs:enumeration value="DOPPIA"/>
+                <xs:enumeration value="TRIPLA"/>
+                <xs:enumeration value="QUADRUPLA"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="cliente" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="nome" type="xs:string"/>
+            <xs:element name="indirizzo" type="xs:string"/>
+            <xs:element name="telefono" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="codiceFiscale" type="xs:string" minOccurs="0"/>
+            <xs:element name="partitaIVA" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+          <xs:attribute name="id">
+            <xs:simpleType>
+              <xs:restriction base="xs:ID">
+                <xs:pattern value="[A-Z]{3}[0-9]{3}"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="prenotazione" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="dataOraCheckIn" type="xs:dateTime"/>
+            <xs:element name="dataOraCheckOut" type="xs:dateTime"/>
+            <xs:element name="cameraPrenotata">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="numeroNotti">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:integer">
+                        <xs:minExclusive value="0"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+                <xs:attribute name="cameraId" type="xs:IDREF"/>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="totalePagato" type="valutaCheck" minOccurs="0"/>
+            <xs:element name="totalePrevisto" type="valutaCheck" minOccurs="0"/>
+          </xs:sequence>
+          <xs:attribute name="clienteId">
+            <xs:simpleType>
+              <xs:restriction base="xs:IDREF">
+                <xs:pattern value="[A-Z]{3}[0-9]{3}"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="confermata" type="xs:boolean"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+  
+
+<xs:complexType name="valutaCheck">
+  <xs:sequence>
+    <xs:element name="importo">
+      <xs:simpleType>
+        <xs:restriction base="xs:decimal">
+          <xs:minInclusive value="0.01"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:element>
+  </xs:sequence>
+  <xs:attribute name="valuta">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="EUR"/>
+        <xs:enumeration value="USD"/>
+        <xs:enumeration value="GBP"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+</xs:complexType>
+
+</xs:schema>

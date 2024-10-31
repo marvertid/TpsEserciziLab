@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<supermercato
+  xmlns="my-ns"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="my-ns validazione.xsd">
+
+  <informazioniSupermercato>
+    <nome>Supermercato Da Vinci</nome>
+    <indirizzo>Via Peruzzi 9, MO, Italy</indirizzo>
+    <telefono>+39 059 123456</telefono>
+    <email>motf030004@istruzione.it</email>
+    <apertura>08:00:00</apertura>
+    <chiusura>14:00:00</chiusura>
+  </informazioniSupermercato>
+
+  <prodotto id="PROD001" categoria="ALIMENTARI">
+    <nome>Latte Intero</nome>
+    <marca>GranLatte</marca>
+    <prezzo valuta="EUR">
+      <importo>1.20</importo>
+    </prezzo>
+  </prodotto>
+  <prodotto id="PROD002" categoria="BEVANDE">
+    <nome>Acqua Naturale 1.5L</nome>
+    <marca>AcquaBlu</marca>
+    <prezzo valuta="EUR">
+      <importo>0.50</importo>
+    </prezzo>
+  </prodotto>
+
+  <cliente id="CLI001">
+    <nome>Anna Verdi</nome>
+    <indirizzo>Via Napoli 22, 80100 Napoli, Italia</indirizzo>
+    <telefono>+39 081 9876543</telefono>
+    <email>anna.verdi@example.com</email>
+    <codiceFiscale>VRDANN85P41F839X</codiceFiscale>
+  </cliente>
+  <cliente id="CLI002">
+    <nome>Luca Neri</nome>
+    <indirizzo>Via Firenze 8, 50100 Firenze, Italia</indirizzo>
+    <telefono>+39 055 6789012</telefono>
+    <email>luca.neri@example.com</email>
+    <partitaIVA>IT12345678901</partitaIVA>
+  </cliente>
+
+  <acquisto clienteId="CLI001" fattura="true">
+    <dataOraAcquisto>2024-10-20T10:30:00</dataOraAcquisto>
+    <prodottiAcquisto>
+      <prodottoAcquisto prodottoId="PROD001">
+        <quantita>3</quantita>
+      </prodottoAcquisto>
+      <prodottoAcquisto prodottoId="PROD002">
+        <quantita>2</quantita>
+      </prodottoAcquisto>
+    </prodottiAcquisto>
+    <totalePagato valuta="EUR">
+      <importo>4.60</importo>
+    </totalePagato>
+  </acquisto>
+  <acquisto>
+    <dataOraAcquisto>2024-10-21T14:45:00</dataOraAcquisto>
+    <prodottiAcquisto>
+      <prodottoAcquisto prodottoId="PROD002">
+        <quantita>1</quantita>
+      </prodottoAcquisto>
+    </prodottiAcquisto>
+    <totalePagato valuta="EUR">
+      <importo>0.50</importo>
+    </totalePagato>
+  </acquisto>
+  
+</supermercato>

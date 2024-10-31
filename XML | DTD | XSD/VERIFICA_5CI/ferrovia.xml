@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <compagniaFerrovioria>
+        <nome>Ferrovia Carpi</nome>
+        <indirizzo>Via Peruzzi 9, MO, Italy</indirizzo>
+        <telefono>+39 059 123456</telefono>
+        <email>motf030004@ferroviecarpi.it</email>
+        <apertura>07:00:00</apertura>
+        <chiusura>23:30:00</chiusura>
+    </compagniaFerrovioria>
+
+    <cliente id="CLI001">
+        <nome>Giovanni Rossi</nome>
+        <indirizzo>Via Milano 15, 20100 Milano, Italia</indirizzo>
+        <telefono>+39 02 9876543</telefono>
+        <email>giovanni.rossi@example.com</email>
+        <codiceFiscale>RSSGNN80A01F205Z</codiceFiscale>
+    </cliente>
+    <cliente id="CLI002">
+        <nome>Maria Bianchi</nome>
+        <indirizzo>Via Roma 3, 50100 Firenze, Italia</indirizzo>
+        <telefono>+39 055 1234567</telefono>
+        <email>maria.bianchi@example.com</email>
+        <codiceFiscale>BNCMRA80A41D612I</codiceFiscale>
+    </cliente>
+
+    <stazione id="STZ001">
+        <nome>Stazione1</nome>
+        <indirizzo>via della stazione 1</indirizzo>
+        <nBinari>3</nBinari>
+        <apertura>07:00:00</apertura>
+        <chiusura>20:00:00</chiusura>
+    </stazione>
+    <stazione id="STZ002">
+        <nome>Stazione2</nome>
+        <indirizzo>via della stazione 2</indirizzo>
+        <nBinari>2</nBinari>
+        <apertura>08:00:00</apertura>
+        <chiusura>20:00:00</chiusura>
+    </stazione>
+
+    <viaggio id="VGO001">
+        <dataOraInizio>2010-10-10T10:10:10</dataOraInizio>
+        <dataOraFine>2010-10-10T20:20:20</dataOraFine>
+        <fermate>
+            <stazione id="STZ002"/>
+            <stazione id="STZ001"/>
+        </fermate>
+        <clientiABordo>
+            <cliente id="CLI001"/>
+            <cliente id="CLI002"/>
+        </clientiABordo>
+        <prezzoViaggio valuta="EUR">
+            <importo>33.32</importo>
+        </prezzoViaggio>
+    </viaggio>
+    <viaggio id="VGO002">
+        <dataOraInizio>2023-10-23T23:23:23</dataOraInizio>
+        <dataOraFine>2023-10-23T23:32:32</dataOraFine>
+        <fermate>
+            <stazione id="STZ001"/>
+            <stazione id="STZ002"/>
+        </fermate>
+        <clientiABordo>
+            <cliente id="CLI002"/>
+            <cliente id="CLI001"/>
+        </clientiABordo>
+        <prezzoViaggio valuta="EUR">
+            <importo>45.99</importo>
+        </prezzoViaggio>
+    </viaggio>
+</data>

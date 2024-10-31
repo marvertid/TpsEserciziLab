@@ -1,0 +1,33 @@
+<!ELEMENT albergo (informazioniAlbergo, camera+, cliente+, prenotazione+)>
+<!ELEMENT informazioniAlbergo (nome, indirizzo, telefono, email, checkIn, checkOut)>
+<!ELEMENT nome (#PCDATA)>
+<!ELEMENT indirizzo (#PCDATA)>
+<!ELEMENT telefono (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT checkIn (#PCDATA)>
+<!ELEMENT checkOut (#PCDATA)>
+<!ELEMENT camera (descrizione, prezzoNotte, note*)>
+<!ATTLIST camera id ID #REQUIRED>
+<!ATTLIST camera categoria (STANDARD|DELUXE) #REQUIRED>
+<!ATTLIST camera tipo (SINGOLA|DOPPIA|TRIPLA|QUADRUPLA) #REQUIRED>
+<!ELEMENT descrizione (#PCDATA)>
+<!ELEMENT prezzoNotte (importo)>
+<!ATTLIST prezzoNotte valuta CDATA #REQUIRED>
+<!ELEMENT importo (#PCDATA)>
+<!ELEMENT note (#PCDATA)>
+<!ELEMENT cliente (nome, indirizzo, telefono, email, codiceFiscale?, partitaIVA?)>
+<!ATTLIST cliente id ID #REQUIRED>
+<!ELEMENT codiceFiscale (#PCDATA)>
+<!ELEMENT partitaIVA (#PCDATA)>
+<!ELEMENT prenotazione (dataOraCheckIn, dataOraCheckOut, cameraPrenotata, totalePagato?, totalePrevisto?)>
+<!ATTLIST prenotazione clienteId IDREF #REQUIRED>
+<!ATTLIST prenotazione confermata (true|false) #REQUIRED>
+<!ELEMENT dataOraCheckIn (#PCDATA)>
+<!ELEMENT dataOraCheckOut (#PCDATA)>
+<!ELEMENT cameraPrenotata (numeroNotti)>
+<!ATTLIST cameraPrenotata cameraId IDREF #REQUIRED>
+<!ELEMENT numeroNotti (#PCDATA)>
+<!ELEMENT totalePagato (importo)>
+<!ATTLIST totalePagato valuta CDATA #REQUIRED>
+<!ELEMENT totalePrevisto (importo)>
+<!ATTLIST totalePrevisto valuta CDATA #REQUIRED>

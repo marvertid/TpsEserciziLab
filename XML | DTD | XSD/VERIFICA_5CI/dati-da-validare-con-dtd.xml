@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE albergo SYSTEM "validazione.dtd">
+<albergo>
+
+  <informazioniAlbergo>
+    <nome>Hotel Da Vinci</nome>
+    <indirizzo>Via Peruzzi 9, MO, Italy</indirizzo>
+    <telefono>+39 059 123456</telefono>
+    <email>motf030004@istruzione.it</email>
+    <checkIn>14:00:00</checkIn>
+    <checkOut>11:00:00</checkOut>
+  </informazioniAlbergo>
+
+  <camera id="CAM001" categoria="STANDARD" tipo="SINGOLA">
+    <descrizione>Camera matrimoniale con bagno privato e vista città</descrizione>
+    <prezzoNotte valuta="EUR">
+      <importo>80.00</importo>
+    </prezzoNotte>
+  </camera>
+  <camera id="CAM002" categoria="DELUXE" tipo="DOPPIA">
+    <descrizione>Suite con balcone e vista mare</descrizione>
+    <prezzoNotte valuta="EUR">
+      <importo>150.00</importo>
+    </prezzoNotte>
+    <note>Se primo soggiorno, pagamento in anticipo</note>
+  </camera>
+
+  <cliente id="CLI001">
+    <nome>Giovanni Rossi</nome>
+    <indirizzo>Via Milano 15, 20100 Milano, Italia</indirizzo>
+    <telefono>+39 02 9876543</telefono>
+    <email>giovanni.rossi@example.com</email>
+    <codiceFiscale>RSSGNN80A01F205Z</codiceFiscale>
+  </cliente>
+  <cliente id="CLI002">
+    <nome>Maria Bianchi</nome>
+    <indirizzo>Via Roma 3, 50100 Firenze, Italia</indirizzo>
+    <telefono>+39 055 1234567</telefono>
+    <email>maria.bianchi@example.com</email>
+    <partitaIVA>IT98765432109</partitaIVA>
+  </cliente>
+
+  <prenotazione clienteId="CLI001" confermata="true">
+    <dataOraCheckIn>2024-10-25T14:00:00</dataOraCheckIn>
+    <dataOraCheckOut>2024-10-28T11:00:00</dataOraCheckOut>
+    <cameraPrenotata cameraId="CAM001">
+      <numeroNotti>3</numeroNotti>
+    </cameraPrenotata>
+    <totalePagato valuta="EUR">
+      <importo>240.00</importo>
+    </totalePagato>
+  </prenotazione>
+  <prenotazione clienteId="CLI002" confermata="false">
+    <dataOraCheckIn>2024-11-05T14:00:00</dataOraCheckIn>
+    <dataOraCheckOut>2024-11-10T11:00:00</dataOraCheckOut>
+    <cameraPrenotata cameraId="CAM002">
+      <numeroNotti>5</numeroNotti>
+    </cameraPrenotata>
+    <totalePrevisto valuta="EUR">
+      <importo>750.00</importo>
+    </totalePrevisto>
+  </prenotazione>
+
+</albergo>
