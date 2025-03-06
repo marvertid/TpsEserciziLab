@@ -1,0 +1,7 @@
+services:
+  WEBAPPINCLASSE-1.0-SNAPSHOT:
+    image: tomcat:10-jdk17
+    ports:
+      - 8080:8080
+    volumes:
+      - ./target/WEBAPPINCLASSE-1.0-SNAPSHOT:/usr/local/tomcat/webapps/WEBAPPINCLASSE-1.0-SNAPSHOT
