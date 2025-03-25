@@ -15,7 +15,7 @@
 </head>
 <body>
 <div>
-   <h1>Login Page</h1>
+   <h1>Login page</h1>
     <form action="admin.jsp" method="post">
         <input type="text" placeholder="Username.. " name="username" required/>
         <input type="password" placeholder="Password.. " name="password" required/>

@@ -1,0 +1,26 @@
+services:
+
+  my-webapp:
+    image: tomcat:11
+    ports:
+      - 8080:8080
+    volumes:
+      - ./target/my-webapp:/usr/local/tomcat/webapps/my-webapp
+
+  mariadb:
+    image: mariadb:10
+    environment:
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: true
+    volumes:
+      - mariadb_data:/var/lib/mysql
+#    ports:
+#      - 3306:3306
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - 81:80
+    environment:
+      - PMA_HOST=mariadb
+      - PMA_USER=root
+volumes:
+  mariadb_data:

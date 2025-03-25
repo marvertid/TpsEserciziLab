@@ -1,0 +1,5 @@
+it/vinci/db/DbService.class
+it/vinci/HelloServlet.class
+it/vinci/db/BaseDbService.class
+it/vinci/db/data/SampleDbData.class
+it/vinci/JsonServlet.class
