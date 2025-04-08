@@ -6,11 +6,11 @@ import java.sql.SQLException;
 
 public abstract class BaseDbService {
 
-    private static final String DB_HOST = "mariadb";
+    private static final String DB_HOST = "localhost";
     private static final String DB_PORT = "3306";
     private static final String DB_USER = "root";
     private static final String DB_PASS = "";
-    private static final String DB_DATABASE = "ProvincieComuni";
+    private static final String DB_DATABASE = "MENSA";
 
     static {
         try {

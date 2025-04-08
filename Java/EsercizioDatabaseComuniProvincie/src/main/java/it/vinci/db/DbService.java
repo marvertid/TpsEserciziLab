@@ -1,6 +1,7 @@
 package it.vinci.db;
 
-import it.vinci.db.data.SampleDbData;
+import it.vinci.db.data.SampleComune;
+import it.vinci.db.data.SampleProvincia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,19 +12,17 @@ import java.util.List;
 
 public class DbService extends BaseDbService {
 
-    public static List<SampleDbData> selectUsers(String surname) {
+    public static List<SampleProvincia> getProvince() {
         try {
-            List<SampleDbData> result = new ArrayList<>();
+            List<SampleProvincia> result = new ArrayList<>();
             Connection con = getConnection();
             PreparedStatement stmt = con.prepareStatement(
-                    "select name, surname " +
-                            "from sample_db_table " +
-                            "where surname = ? "
+                    "select Id " +
+                            "from provincia"
             );
-            stmt.setString(1, surname);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                result.add(new SampleDbData(rs.getString("name"), rs.getString("surname")));
+                result.add(new SampleProvincia(rs.getString("Id")));
             }
 
             rs.close();
@@ -34,18 +33,25 @@ public class DbService extends BaseDbService {
             throw new RuntimeException(e);
         }
     }
-
-    public static void insertUser(SampleDbData sampleDbData) {
+    public static List<SampleComune> getComuni(String codProvincia) {
         try {
+            List<SampleComune> result = new ArrayList<>();
             Connection con = getConnection();
             PreparedStatement stmt = con.prepareStatement(
-                    "insert into sample_db_table(name, surname) " +
-                            "values (?, ?) "
+                    "select Nome " +
+                            "from comune " +
+                            "where CodProvincia = ?"
             );
-            stmt.setString(1, sampleDbData.getName());
-            stmt.setString(2, sampleDbData.getSurname());
-            stmt.executeUpdate();
+            stmt.setString(1, codProvincia);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                result.add(new SampleComune(rs.getString("Nome")));
+            }
 
+            rs.close();
+            stmt.close();
+            con.close();
+            return result;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

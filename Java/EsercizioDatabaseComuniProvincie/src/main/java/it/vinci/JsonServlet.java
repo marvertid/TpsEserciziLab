@@ -1,7 +1,7 @@
 package it.vinci;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import it.vinci.db.data.SampleDbData;
+import it.vinci.db.data.SampleProvincia;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,12 +16,11 @@ public class JsonServlet extends HttpServlet {
         resp.setContentType("application/json");
         ObjectMapper json = new ObjectMapper();
 
-        SampleDbData sampleDbData = json.readValue(req.getReader(), SampleDbData.class);
+        SampleProvincia sampleProvincia = json.readValue(req.getReader(), SampleProvincia.class);
 
-        sampleDbData.setSurname(sampleDbData.getSurname().toUpperCase());
-        sampleDbData.setName(sampleDbData.getName().toUpperCase());
+        sampleProvincia.setId(sampleProvincia.getId().toUpperCase());
 
-        resp.getWriter().println(json.writeValueAsString(sampleDbData));
+        resp.getWriter().println(json.writeValueAsString(sampleProvincia));
     }
 
 }
